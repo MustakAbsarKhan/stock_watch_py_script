@@ -64,10 +64,3 @@ Please note that the executable file is specifically built for Windows operating
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-```
-
-You can copy and paste the above content into your GitHub repository's README file. Remember to update the link to the stock_watch.exe file if it changes in the future.
-
-Feel free to customize the README further based on your preferences and specific project details.
-
-Let me know if you need any further assistance!

@@ -1,6 +1,34 @@
+import os
 import requests
 import webbrowser
+import time
 from bs4 import BeautifulSoup
+from tqdm import tqdm
+
+# Introduction of the Developer
+print("\n Welcome to our Personalized Stock Watch!")
+print("\n Developed by Mohammad Mustak Absar Khan")
+print(" Contact: mustak.absar.khan@gmail.com \n")
+
+# Locate the stock_names.txt file
+file_path = "stock_names.txt"
+
+while not os.path.exists(file_path):
+    print(f"File '{file_path}' not found.")
+    print("Please make sure the file is in the same directory.")
+    choice = input("Do you want to retry? (y/n): ")
+    if choice.lower() == 'n':
+        print("Exiting the program.")
+        exit()
+    
+    countdown = 10  # Countdown timer duration in seconds
+    print(f"Waiting for the file to be available... (Retry in {countdown} seconds)")
+    for i in range(countdown, 0, -1):
+        print(f"Retrying in {i} seconds...", end="\r")
+        time.sleep(1)
+    
+print(f"File '{file_path}' found. Starting the program.")
+
 
 def scrape_dse_data(url):
     try:
@@ -115,17 +143,17 @@ while restart:
     file_path = "stock_names.txt"
     stock_names = fetch_values_from_file(file_path)
     stripped_names = strip_order_numbers(stock_names)
-    print(stripped_names)
 
     for stock in stripped_names:
-        default_settings = input("Do you wish to go with the default settings? (y/n): ")
+        show_dse = False  # Reset show_dse for each stock
+        show_cse = False  # Reset show_cse for each stock
+
+        default_settings = input("\n Do you wish to go with the default settings? (y/n): ")
         if default_settings.lower() == 'y':
             show_dse = True
             show_cse = True
         else:
-            show_dse = False
-            show_cse = False
-            preference = input("Do you wish to see data of DSE, CSE, or both? (d/c/b): ")
+            preference = input("\n Do you wish to see data of DSE, CSE, or both? (d/c/b): ")
             if preference.lower() == 'd':
                 show_dse = True
             elif preference.lower() == 'c':
@@ -133,30 +161,52 @@ while restart:
             elif preference.lower() == 'b':
                 show_dse = True
                 show_cse = True
-        
+                
         if show_dse:
             dse_url = f'https://www.dsebd.org/displayCompany.php?name={stock}'
             stocknow_url = f'https://stocknow.com.bd/search?symbol={stock}'
-            dse_data = scrape_dse_data(dse_url)
+
+            print(f"\nFetching data for {stock.upper()} from DSE...")
+            time.sleep(1)  # Simulate delay for demonstration purposes
+
+            with tqdm(total=50, desc="DSE Data", unit="%", ncols=80) as pbar:
+                dse_data = scrape_dse_data(dse_url)
+                time.sleep(1)  # Simulating delay for demonstration purposes
+                pbar.update(50)
+
             print(f"\nData for {stock.upper()} from DSE:")
             if dse_data:
                 for key, value in dse_data.items():
                     print(f"{key}: {value}")
-            user_pref = input("\n Do you want to Know about shareholding '%' changes? Type y/n (Yes or No) ")
-            if user_pref.lower() == "y":
-                webbrowser.open(stocknow_url)
-    
+
         if show_cse:
             cse_url = f'https://www.cse.com.bd/company/companydetails/{stock}'
-            cse_data = scrape_cse_data(cse_url)
+
+            print(f"\nFetching data for {stock.upper()} from CSE...")
+            time.sleep(1)  # Simulate delay for demonstration purposes
+
+            with tqdm(total=50, desc="CSE Data", unit="%", ncols=80) as pbar:
+                cse_data = scrape_cse_data(cse_url)
+                time.sleep(1)  # Simulate delay for demonstration purposes
+                pbar.update(50)
+
             print(f"\nData for {stock.upper()} from CSE:")
             if cse_data:
                 for key, value in cse_data.items():
                     if key != "" and value != "":
                         print(f"{key}: {value}")
         
+        user_pref = input("\n Do you want to know about shareholding '%' changes? Type y/n (Yes or No): ")
+        if user_pref.lower() == "y":
+            webbrowser.open(stocknow_url)
+        
         input("\nPress ENTER to move to the next answer!!\n")
 
-    choice = input("\n Do you want to Restart the program? (y/n): ")
-    if choice.lower() != 'y':
+    choice = input("\n Do you want to restart the program? (y/n): ")
+    if choice.lower() == 'y':
+        print("\nRestarting the Program ....")
+        time.sleep(3)
         restart = False
+    elif choice.lower() == 'n':
+        print("\nClosing the Program ....\n")
+        time.sleep(4)

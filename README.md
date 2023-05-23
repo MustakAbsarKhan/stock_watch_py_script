@@ -59,7 +59,7 @@ Stock Watch Python Script is a tool that allows you to scrape stock data from th
 
 4. The script will display the extracted stock data for each stock in the console.
 
-5. If you prefer using the executable file (`stock_watch.exe`) you can find it as `stock_watch.zip` inside exe_file folder. You can simply double-click on it to launch the program. The executable file eliminates the need for installing dependencies and running the script from the command line.
+5. If you prefer using the executable file (`stock_watch.exe`) you can find it as `stock_watch.zip` inside exe_file folder in the [Repository](https://github.com/MustakAbsarKhan/stock_watch_py_script). You can simply double-click on it to launch the program. The executable file eliminates the need for installing dependencies and running the script from the command line.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.

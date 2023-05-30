@@ -1,9 +1,25 @@
 # Stock Watch Python Script
 
-![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-
+<br>
+<p align="center">
+  
+  <a href="https://github.com/MustakAbsarKhan/nvidia_driver_updator/issues">
+    <img src="https://img.shields.io/github/issues/MustakAbsarKhan/nvidia_driver_updator"/> 
+  </a>
+  <a href="https://github.com/MustakAbsarKhan/nvidia_driver_updator/network/members">
+    <img src="https://img.shields.io/github/forks/MustakAbsarKhan/nvidia_driver_updator"/> 
+  </a>  
+  <a href="https://github.com/MustakAbsarKhan/nvidia_driver_updator/stargazers">
+    <img src="https://img.shields.io/github/stars/MustakAbsarKhan/nvidia_driver_updator"/> 
+  </a>
+    <a href="https://github.com/MustakAbsarKhan/nvidia_driver_updator/LICENSE">
+    <img src="https://img.shields.io/github/license/MustakAbsarKhan/nvidia_driver_updator"/> 
+  </a>
+</p>
+<br>
+<p align="center">
 A Python script for scraping stock data from Dhaka Stock Exchange (DSE) and Chittagong Stock Exchange (CSE) websites.
+</p>
 
 ## Table of Contents
 - [Introduction](#introduction)

@@ -18,7 +18,8 @@
 </p>
 <br>
 <p align="center">
-A Python script for scraping stock data from Dhaka Stock Exchange (DSE) and Chittagong Stock Exchange (CSE) websites.
+A Python script for scraping stock data from Dhaka Stock Exchange (DSE) and Chittagong Stock Exchange (CSE) websites.<br>
+  <b>Please `Star` (⭐) the repository if you like the program &#9829; &#9829; </b>
 </p>
 
 ## Table of Contents
